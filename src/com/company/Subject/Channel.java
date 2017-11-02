@@ -2,7 +2,6 @@ package com.company.Subject;
 
 import com.company.Content.Content;
 import com.company.Observer.Observer;
-import com.company.Content.Video;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class Channel implements Subject {
     }
 
     @Override
-    public void register(Observer observer) {
+    public void attach(Observer observer) {
         if (!subscribers.contains(observer)){
             subscribers.add(observer);
             System.out.print((char) 27 + "[34mSubscription: " + (char)27 + "[0m");
@@ -26,7 +25,7 @@ public class Channel implements Subject {
     }
 
     @Override
-    public void delete(Observer observer) {
+    public void detach(Observer observer) {
         if (subscribers.contains(observer)){
             subscribers.remove(observer);
             System.out.print((char) 27 + "[31mUnsubscription: " + (char)27 + "[0m");
@@ -36,7 +35,7 @@ public class Channel implements Subject {
     }
 
     @Override
-    public void inform() {
+    public void notifу() {
         for (Observer observer: subscribers){
             observer.update(this);
         }
@@ -47,12 +46,11 @@ public class Channel implements Subject {
         return name;
     }
 
-    @Override
     public void addContent(Content content) {
         System.out.print((char) 27 + "[32mUpdate: " + (char)27 + "[0m");
-        System.out.println(String.format("Channel[%s] add %s: %s",this,content.getClass().getSimpleName(),content.getName()));
+        System.out.println(String.format("Channel[%s] add %s: %s | Description: %s",this,content.getClass().getSimpleName(),content.getName(),content.getDescription()));
         videos.add(content);
-        inform();
+        notifу();
     }
 
     public Content getLastContent(){

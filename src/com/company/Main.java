@@ -10,13 +10,13 @@ import com.company.Subject.Subject;
 public class Main {
 
     public static void main(String[] args) {
-        Subject funVideoChannel = new Channel("Funny videos");
-        Subject videoGameChannel = new Channel("Let's play");
+        Channel funVideoChannel = new Channel("Funny videos");
+        Channel videoGameChannel = new Channel("Let's play");
 
-        Observer bobJackUser = new Subscriber("Robin Jack");
-        Observer miniGirlUser = new Subscriber("Hellen Straford");
-        Observer totalDominatorUser = new Subscriber("Mister Anonymous");
-        Observer user001 = new Subscriber("Black Jack");
+        Subscriber bobJackUser = new Subscriber("Robin Jack");
+        Subscriber miniGirlUser = new Subscriber("Hellen Straford");
+        Subscriber totalDominatorUser = new Subscriber("Mister Anonymous");
+        Subscriber user001 = new Subscriber("Black Jack");
 
         bobJackUser.subscribe(funVideoChannel);
         miniGirlUser.subscribe(funVideoChannel);
@@ -26,10 +26,10 @@ public class Main {
         user001.subscribe(videoGameChannel);
 
         funVideoChannel.addContent(new Video("Cute kitties", "Cute kitties funny play in the garden"));
-        videoGameChannel.addContent(new Video("Spin Tires","Play the best fame in the world: Sping Tires"));
+        videoGameChannel.addContent(new Video("Spin Tires","Play the best game in the world"));
 
         bobJackUser.unsubscribe(funVideoChannel);
-        funVideoChannel.addContent(new Video("Drank man", "Drunk man fallen from bicycle"));
+        funVideoChannel.addContent(new Video("Drunk man", "Drunk man fallen from bicycle"));
 
     }
 }

@@ -19,8 +19,4 @@ public class Video implements Content{
         return description;
     }
 
-    @Override
-    public void show(){
-        System.out.println(String.format("video: %s, description: %s",name,description));
-    }
 }

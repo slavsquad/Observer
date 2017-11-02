@@ -1,6 +1,7 @@
 package com.company.Observer;
 
 import com.company.Content.Content;
+import com.company.Subject.Channel;
 import com.company.Subject.Subject;
 
 import java.util.ArrayList;
@@ -14,32 +15,32 @@ public class Subscriber implements Observer {
         this.name = name;
     }
 
-    @Override
     public void subscribe(Subject subject){
         if (!subscriptions.contains(subject)){
             subscriptions.add(subject);
-            subject.register(this);
+            subject.attach(this);
         }
     }
 
-    @Override
     public void unsubscribe(Subject subject) {
         if (subscriptions.contains(subject)){
             subscriptions.remove(subject);
-            subject.delete(this);
+            subject.detach(this);
         }
     }
 
     @Override
     public void update(Subject subject) {
-        Content video;
-        video =  subject.getLastContent();
-        if (video == null){
-            System.out.println("This video is not exist!");
-        }else {
-            System.out.print((char) 27 + "[35mNotify: " + (char)27 + "[0m");
-            System.out.print(this +" watch ");
-            video.show();
+        Content content;
+        if (subject instanceof Channel){
+            Channel channel = (Channel)subject;
+            content =  channel.getLastContent();
+            if (content == null){
+                System.out.println("This video is not exist!");
+            }else {
+                System.out.print((char) 27 + "[35mNotify: " + (char)27 + "[0m");
+                System.out.println(String.format("%s got %s: %s ",this,content.getClass().getSimpleName(),content.getName()));
+            }
         }
     }
 

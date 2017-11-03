@@ -19,8 +19,6 @@ public class Channel implements Subject {
     public void attach(Observer observer) {
         if (!subscribers.contains(observer)){
             subscribers.add(observer);
-            System.out.print((char) 27 + "[34mSubscription: " + (char)27 + "[0m");
-            System.out.println(observer +" subscribed to channel " +this);
         }
     }
 
@@ -28,9 +26,7 @@ public class Channel implements Subject {
     public void detach(Observer observer) {
         if (subscribers.contains(observer)){
             subscribers.remove(observer);
-            System.out.print((char) 27 + "[31mUnsubscription: " + (char)27 + "[0m");
-            System.out.println(observer +" unsubscribed from channel" +this);
-        }
+    }
 
     }
 

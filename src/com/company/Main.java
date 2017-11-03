@@ -1,11 +1,8 @@
 package com.company;
 
-import com.company.Content.Content;
 import com.company.Content.Video;
-import com.company.Observer.Observer;
 import com.company.Observer.Subscriber;
 import com.company.Subject.Channel;
-import com.company.Subject.Subject;
 
 public class Main {
 

@@ -17,6 +17,8 @@ public class Subscriber implements Observer {
 
     public void subscribe(Subject subject){
         if (!subscriptions.contains(subject)){
+            System.out.print((char) 27 + "[34mSubscription: " + (char)27 + "[0m");
+            System.out.println(this +" subscribed to channel " +subject);
             subscriptions.add(subject);
             subject.attach(this);
         }
@@ -24,6 +26,8 @@ public class Subscriber implements Observer {
 
     public void unsubscribe(Subject subject) {
         if (subscriptions.contains(subject)){
+            System.out.print((char) 27 + "[31mUnsubscription: " + (char)27 + "[0m");
+            System.out.println(this +" unsubscribed from channel" +subject);
             subscriptions.remove(subject);
             subject.detach(this);
         }
